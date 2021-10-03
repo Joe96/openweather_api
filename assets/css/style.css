@@ -1,0 +1,19 @@
+header * {
+    display: inline-block;
+    color: #000000;
+    margin-left: 20px;
+    text-decoration: none;
+
+}
+
+header {
+    background-color: #DFBF01;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.cityInput {
+    background-color: #000000;
+}
