@@ -1,11 +1,12 @@
-var cityName = "Boston";
+var cityName = "";
+var userInputValue = $('#userInput').attr('value');
+
 var {lat} = location;
 var {lon} = location;
-var apiBaseUrl = 'https://api.openweathermap.org/'
-var searchBtn = $('#searchBtn')
+var apiBaseUrl = 'https://api.openweathermap.org/';
 
 function getCoords(){
-    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ef394b3dac59c5d80dbb39281ef08319`
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ef394b3dac59c5d80dbb39281ef08319`;
     fetch(requestUrl)
     .then(function(response){
         return response.json();
@@ -27,11 +28,19 @@ function getWeather(){
         return response.json();
     })
     .then(function(data){
-        console.log(data)
+        console.log(data);
     });
 }
-searchBtn.on('click',function(event){
-    event.preventDefault()
-    console.log('yes')
+
+$(document).ready(function() {
+    $("#userInput").on('keyup', function (event) {
+        if (event.keyCode === 13) {
+            console.log("Enter key pressed!!!!!");
+            var str = $("#userInput").val();
+            alert(str);
+        }
+    });
+
+
+
 })
-getCoords();
