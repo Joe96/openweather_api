@@ -1,11 +1,11 @@
-var cityName = "";
 var userInputValue = $('#userInput').attr('value');
 
 var {lat} = location;
 var {lon} = location;
 var apiBaseUrl = 'https://api.openweathermap.org/';
 
-function getCoords(){
+function getCoords(cityName){
+    console.log(cityName);
     var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ef394b3dac59c5d80dbb39281ef08319`;
     fetch(requestUrl)
     .then(function(response){
@@ -36,11 +36,8 @@ $(document).ready(function() {
     $("#userInput").on('keyup', function (event) {
         if (event.keyCode === 13) {
             console.log("Enter key pressed!!!!!");
-            var str = $("#userInput").val();
-            alert(str);
+            var cityName = $("#userInput").val();
+            getCoords(cityName)
         }
     });
-
-
-
 })
