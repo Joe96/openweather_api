@@ -31,7 +31,8 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Mock-Up
+![Screenshot (321)](https://user-images.githubusercontent.com/17390256/136675210-211eae43-6a86-4a86-ac1e-d481be3fda8f.png)
 
-The following image shows the web application's appearance and functionality:
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+## Git-page
+https://joe96.github.io/openweather_api/
