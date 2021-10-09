@@ -2,15 +2,18 @@ var userInputValue = $('#userInput').attr('value');
 var {lat} = location;
 var {lon} = location;
 var uvIndex = $("#uvIndex");
+var cityList =[];
 var apiBaseUrl = 'https://api.openweathermap.org/';
 
 function getCoords(cityName){
     console.log(cityName);
     var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=ef394b3dac59c5d80dbb39281ef08319`;
     fetch(requestUrl)
+
     .then(function(response){
         return response.json();
     })
+
     .then(function(data){
         console.log(data)
         lat = data.coord.lat;
@@ -26,7 +29,7 @@ function getCoords(cityName){
 }
 
 function getWeather(){
-    var requestUrl = `${apiBaseUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=ef394b3dac59c5d80dbb39281ef08319`
+    var requestUrl = `${apiBaseUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=ef394b3dac59c5d80dbb39281ef08319`;
     fetch(requestUrl)
     .then(function(response){
         return response.json();
@@ -40,15 +43,28 @@ function getWeather(){
             $("#humidity"+i).text("humidity: " + data.daily[i].humidity+ " %");
         }
     })
-    updateStorage(data["name"]);
-    futureForecast(data["coord"].lat, data["coord"].lon);
+}
+
+function appendCurrentCity(city) {
+    
+    if(!cityList.includes(city)){
+    cityList.push(city);
+    localStorage.setItem("previousCities",  JSON.stringify(cityList));
+    }
+
+    $('#cityList').empty();
+      var cityName= JSON.parse(localStorage.getItem("previousCities"));
+      for(var i=0;i<cityName.length;i++){
+      $("#cityList").append(`<li class="btn btn-block btn-warning">${cityName[i]} </li>`);
+    }
 }
 
 $(document).ready(function() {
     $("#userInput").on('keyup', function (event) {
         if (event.keyCode === 13) {
             var cityName = $("#userInput").val();
-            getCoords(cityName)
+            getCoords(cityName);
+            appendCurrentCity(cityName);
         }
     });
 })
