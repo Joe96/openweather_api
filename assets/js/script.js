@@ -71,5 +71,6 @@ $(document).ready(function() {
 })
 
 $(document).on('click', '#cityButton', function() {
-    console.log("Hi")
+    var text = $(this).text();
+    getCoords(text);
 });
