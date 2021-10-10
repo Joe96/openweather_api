@@ -55,10 +55,11 @@ function appendCurrentCity(city) {
     $('#cityList').empty();
       var cityName= JSON.parse(localStorage.getItem("previousCities"));
       for(var i=0;i<cityName.length;i++){
-      $("#cityList").append(`<li class="btn btn-block btn-warning">${cityName[i]} </li>`);
+      $("#cityList").append(`<li id="cityButton"class="btn btn-block btn-warning">${cityName[i]} </li>`);
     }
 }
 
+//start search on enter.
 $(document).ready(function() {
     $("#userInput").on('keyup', function (event) {
         if (event.keyCode === 13) {
@@ -68,3 +69,7 @@ $(document).ready(function() {
         }
     });
 })
+
+$(document).on('click', '#cityButton', function() {
+    console.log("Hi")
+});
