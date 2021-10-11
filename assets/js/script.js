@@ -41,6 +41,7 @@ function getWeather(){
             $("#temp"+i).text("Temp: " + data.daily[i].temp.day + " F");
             $("#wind"+i).text("Wind: " + data.daily[i].wind_speed + " mph");
             $("#humidity"+i).text("humidity: " + data.daily[i].humidity+ " %");
+            uvIndex.html(data.current.uvi);
         }
     })
 }
